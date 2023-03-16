@@ -1,13 +1,13 @@
 FROM php:8.1-apache
 
 RUN groupmod -g 1000 www-data \
-  && usermod -u 1000 -g 1000 www-data \
-  && chown -R www-data:www-data /var/www/
+  && usermod -u 1000 -g 1000 www-data
 
 RUN mkdir \
     /var/www/html/vendor \
     /var/www/html/var \
     /var/www/html/node_modules
+
 RUN chown -R www-data:www-data /var/www
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
