@@ -1,7 +1,8 @@
 FROM php:8.1-apache
 
 RUN groupmod -g 1000 www-data \
-  && usermod -u 1000 -g 1000 www-data
+  && usermod -u 1000 -g 1000 www-data \
+  && chown -R www-data:www-data /var/www/
 
 RUN mkdir \
     /var/www/html/vendor \
