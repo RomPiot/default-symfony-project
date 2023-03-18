@@ -1,8 +1,5 @@
 FROM php:8.1-apache
 
-RUN groupmod -g 1000 www-data \
-  && usermod -u 1000 -g 1000 www-data
-
 RUN apt-get update
 RUN apt-get install -y \
     nodejs \
@@ -45,5 +42,13 @@ RUN pecl install xdebug \
 
 RUN a2enmod rewrite \
     && service apache2 restart
+
+ARG USER_ID
+ARG GROUP_ID
+
+RUN usermod -u $USER_ID www-data
+RUN groupmod -g $GROUP_ID www-data
+
+USER www-data
 
 WORKDIR /var/www
