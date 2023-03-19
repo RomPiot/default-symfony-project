@@ -46,8 +46,8 @@ RUN a2enmod rewrite \
 ARG USER_ID
 ARG GROUP_ID
 
-RUN usermod -u $USER_ID www-data
 RUN groupmod -g $GROUP_ID www-data
+RUN usermod -u $USER_ID -g $GROUP_ID www-data
 
 USER www-data
 
