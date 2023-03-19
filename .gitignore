@@ -1,6 +1,7 @@
 .idea
 .composer
 .bash_history
+.php-cs-fixer.cache
 
 ###> symfony/framework-bundle ###
 /.env.local
@@ -10,6 +11,7 @@
 /public/bundles/
 /var/
 /vendor/
+/tools/*/vendor/
 ###< symfony/framework-bundle ###
 
 ###> symfony/phpunit-bridge ###
@@ -27,3 +29,8 @@ yarn-error.log
 ###> qossmic/deptrac-shim ###
 /.deptrac.cache
 ###< qossmic/deptrac-shim ###
+
+###> squizlabs/php_codesniffer ###
+/.phpcs-cache
+/phpcs.xml
+###< squizlabs/php_codesniffer ###

@@ -17,12 +17,15 @@ security:
 	symfony check:security
 
 stan:
-	vendor/bin/phpstan analyse --ansi --no-progress --error-format=table
+	./vendor/bin/phpstan analyse --ansi --no-progress --error-format=table
 
 cs:
 	./vendor/bin/phpcs ./src -p -s -v --colors --no-cache
 
 csfix:
+	./tools/php-cs-fixer/vendor/bin/php-cs-fixer fix ./src --no-cache
+
+csfix-2:
 	./vendor/bin/phpcbf ./src --no-cache
 
 phan:
@@ -39,18 +42,6 @@ ins:
 
 deptrac:
 	./vendor/bin/deptrac analyse depfile.yaml --no-cache
-
-dep-uml:
-	./vendor/bin/dephpend uml --output=uml.png ./src
-
-dep-dsm:
-	./vendor/bin/dephpend dsm ./src > dependencies.html
-
-dep-metrics:
-	./vendor/bin/dephpend metrics ./src
-
-metrics:
-	./vendor/bin/phpmetrics --report-html="./report" ./src
 
 behat:
 	./vendor/bin/behat --snippets-for --colors
